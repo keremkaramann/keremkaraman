@@ -82,6 +82,7 @@ function resetFunc() {
   tiltAngle.textContent = 0;
   seesaw_plank.style.transform = "translateX(-50%)";
   document.querySelectorAll(".weight").forEach((w) => w.remove());
+  infoSection.innerHTML = "";
 }
 
 function saveStorage() {
