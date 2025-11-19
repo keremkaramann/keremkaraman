@@ -5,6 +5,7 @@ const leftValue = document.querySelector("#left_weight");
 const rightValue = document.querySelector("#right_weight");
 const tiltAngle = document.querySelector("#tilt_angle");
 const infoSection = document.querySelector(".info-section");
+
 leftValue.textContent = 0;
 rightValue.textContent = 0;
 tiltAngle.textContent = 0;
@@ -68,6 +69,7 @@ seesaw_cont.addEventListener("click", (e) => {
 
   setTimeout(() => {
     newWeight.style.transform = "translateY(0)";
+    saveStorage();
   }, 50);
 });
 
@@ -77,6 +79,31 @@ function resetFunc() {
   rightWeights.length = 0;
   leftValue.textContent = 0;
   rightValue.textContent = 0;
+  tiltAngle.textContent = 0;
   seesaw_plank.style.transform = "translateX(-50%)";
   document.querySelectorAll(".weight").forEach((w) => w.remove());
 }
+
+function saveStorage() {
+  const info = {
+    leftWeights,
+    rightWeights,
+    tilt: seesaw_plank.style.transform,
+  };
+
+  localStorage.setItem("seesaw", JSON.stringify(info));
+}
+
+function loadStorage() {
+  const info = JSON.parse(localStorage.getItem("seesaw"));
+
+  leftWeights.push(...info.leftWeights);
+  rightWeights.push(...info.rightWeights);
+
+  leftValue.textContent = leftWeights.reduce((a, b) => a + b, 0);
+  rightValue.textContent = rightWeights.reduce((a, b) => a + b, 0);
+
+  seesaw_plank.style.transform = info.tilt;
+}
+
+window.addEventListener("DOMContentLoaded", loadStorage);
