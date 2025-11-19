@@ -28,7 +28,7 @@
   position: relative;
   border: 1px solid black;
   padding: 10px;
-  background-color: rgb(242, 123, 123);
+  background-color: rgb(241, 174, 174);
 }
 .seesaw-container-2 {
   position: relative;
@@ -61,4 +61,14 @@
   border-bottom: 50px solid #555;
   z-index: 1;
   margin-bottom: 20px;
+}
+
+.weight {
+  border: 1px solid black;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
 }
