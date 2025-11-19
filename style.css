@@ -8,8 +8,7 @@
   justify-content: center;
   margin: 20px;
 }
-.container-1 {
-}
+
 .info {
   display: flex;
   gap: 20px;
@@ -19,10 +18,14 @@
   border: 1px solid black;
   padding: 10px;
   border-radius: 5px;
+  height: 100px;
 }
 .box p {
   color: gray;
   font-size: 24px;
+}
+.box h2 {
+  text-decoration: underline;
 }
 .seesaw-container {
   position: relative;
@@ -73,4 +76,16 @@
   transition: transform 0.5s ease;
   z-index: 9999;
   bottom: 50px;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+}
+.btn button {
+  width: 100%;
+  background-color: rgb(232, 65, 65);
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 20px;
 }
