@@ -28,6 +28,10 @@ seesaw_cont.addEventListener("click", (e) => {
   const sumRight = rightWeights.reduce((a, b) => a + b, 0);
   rightValue.textContent = sumRight;
 
+  let diff = sumRight - sumLeft;
+  diff = Math.max(-15, Math.min(15, diff));
+  seesaw_plank.style.transform = `translateX(-50%) rotate(${diff}deg)`;
+
   const newWeight = document.createElement("div");
   let red = Math.floor(Math.random() * 250 + 0);
   let green = Math.floor(Math.random() * 250 + 0);
@@ -43,7 +47,7 @@ seesaw_cont.addEventListener("click", (e) => {
   newWeight.style.transform = "translateY(-280px)";
   newWeight.style.left = `${clickX - size}px`;
 
-  seesaw_cont.appendChild(newWeight);
+  seesaw_plank.appendChild(newWeight);
 
   setTimeout(() => {
     newWeight.style.transform = "translateY(0)";
@@ -55,5 +59,6 @@ function resetFunc() {
   rightWeights.length = 0;
   leftValue.textContent = 0;
   rightValue.textContent = 0;
+  seesaw_plank.style.transform = "translateX(-50%)";
   document.querySelectorAll(".weight").forEach((w) => w.remove());
 }
